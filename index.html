@@ -180,8 +180,11 @@ div.dataTables_wrapper div.dataTables_filter label{
 <div class="row-fluid">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <!-- BEGIN KEY KPIS -->
     <!-- BEGIN STATION 1 KPIS-->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
             <div class="col-lg-3 col-sm-12">
               <div class="panel panel-custom ">
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
                   <div class="panel-heading metric-heading"><a href="OEE.html" class="hvr-underline-reveal">OEE</a></div>
                           <div class="panel-body">
                             <div class="count count_orange">72%</div>
@@ -190,11 +193,32 @@ div.dataTables_wrapper div.dataTables_filter label{
                                 </div>
                           </div><!--Close Body-->
               </div><!--Close Custom-->
-          </div> <!-- END  STATION 1 KPIS-->
+              <div class="item">
+              <div class="panel-heading metric-heading"><a href="order_count.html" class="hvr-underline-reveal">OEE</a></div>
+                      <div class="panel-body">
+                        <div class="count count_orange">72%</div>
+                        <div class="count_bottom">
+                            <i class="green">2% </i> More than yesterday
+                            </div>
+                      </div><!--Close Body-->
+          </div>
+        </div>  </div><!--Close Custom-->
+      </div>
+            </div>     <script>
+  $('.carousel').carousel({
+  interval: 4000
+  })
+  </script><!-- end STATION 2 KPIS --> <!-- END  STATION 1 KPIS-->
+
+
+
           <!-- BEGIN STATION 1 KPIS-->
           <!-- STATION 2 KPIS-->
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
           <div class="col-lg-3 col-sm-12">
               <div class="panel panel-custom">
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
                   <div class="panel-heading metric-heading">
                            <a href="downtime.html" class="hvr-underline-reveal">Downtime Average</a>
                       </div>
@@ -204,8 +228,26 @@ div.dataTables_wrapper div.dataTables_filter label{
                                 <i class="green"> 75 min</i> Less than Last Week
                                 </div>
                           </div> <!--Close Body-->
-              </div><!--Close Custom-->
-          </div> <!-- end STATION 2 KPIS -->
+            </div>
+            <div class="item">
+            <div class="panel-heading metric-heading"><a href="order_count.html" class="hvr-underline-reveal">Downtime Average</a></div>
+                    <div class="panel-body">
+                      <div class="count count_green">45 min</div>
+                      <div class="count_bottom">
+                          <i class="red">10 </i> Less than yesterday
+                          </div>
+                    </div><!--Close Body-->
+        </div>
+      </div>  </div><!--Close Custom-->
+    </div>
+          </div>     <script>
+$('.carousel').carousel({
+interval: 4000
+})
+</script><!-- end STATION 2 KPIS -->
+
+
+
           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
           <!-- STATION 3 KPIS -->
           <div class="col-lg-3 col-sm-12">
