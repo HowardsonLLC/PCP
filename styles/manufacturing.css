@@ -1,0 +1,416 @@
+/* Global styles, entire web page for Fleet Demo*/
+body {
+	   background-color: #f7f7f7;
+		color: #222222;
+		font-size: 14px;
+		font-family: -apple-system,  'avenir next', avenir, roboto, noto, ubuntu, 'helvetica neue', helvetica, arial, sans-serif;
+    margin-top: -25px;
+	}
+
+/* resizes boxes based on content */
+  html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* end global styles*/
+
+
+/* Global styles for  header*/
+#header-nav {
+		background-color: #ffffff;
+		border: 0px;
+		border-radius: 0px;
+		box-shadow: 1px 1px 1px #888;
+    position: fixed;
+    top: -10px;
+    width: 100%;
+    z-index: 3;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    
+	}
+	
+/*controls the image in left hand corner of header*/
+	.watson {
+		text-align: center;
+		color: #222222 ; 	/* #0074D9*/
+
+		margin-top: 3px;
+		font-size: 2.6em;
+		margin: 10px 35px 0px 0;
+	}
+
+	/* end Watson Logo */
+
+
+/* controls the Title section of the header */
+.navbar-brand {
+	padding-top: 25px;
+	height: 10px;
+/* If you wanted to center the title 
+  transform: translateX(-55%);
+  left: 50%;
+  position: absolute;*/
+}
+
+/* Styling the title text*/
+.navbar-brand h1 {
+	color: #222222;
+	font-size: 1.5em;
+	margin-left: 5px;
+	margin-top: 5px;
+	line-height: .75;
+
+}
+
+/* Get rid of unnecessary bootstrap text effects*/
+.navbar-brand a:hover, .navbar-brand a:focus {
+	text-decoration: none;
+}
+/* end title*/
+
+
+/*Styling for links on right hand side of page */
+
+/*creates space from top of page*/
+#nav-list { 
+  margin-top: 0px; 
+  padding-top:  0px;
+  background-color: #ffffff;
+}
+
+#nav-list a {/* change font color, center text  */
+  text-align: center;
+  margin-top: -8px; /*This needs to be reduced on mobile and tablet screen sizes. See media queries.*/
+  color: #222222;
+  font-weight: bold;
+  font-size: 1.2em;
+
+}
+/* changes font size of all nav bar links*/
+#nav-list a span {
+  font-size: 2em;
+}
+
+/* end right hand link styles */
+
+/* Styles the collapseable nav on tablet/mobile*/
+
+.navbar-header button.navbar-toggle, .navbar-header .icon-bar {
+  border: 1px solid #222222;
+}
+/* Styles the collapseable nav on tablet/mobile*/
+.navbar-header button.navbar-toggle {
+  clear: both; 
+  margin-top: -40px; 
+} 
+
+
+/* End Header */
+
+/* This class seperates the sidebar from the rest of the content in the body of the page*/
+/* Use this case to remove or readd scrolling, and increase/decrease 
+space from the sidebar/navbar and the content of the page */
+#main {
+  padding-top: 90px;
+  padding-left: 55px;
+  margin: 0px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+
+
+/* sidebar styles*/
+
+/*modifying properties of body,html .rowoffcanvas, main, and sidebar fixes the 2 navbars in place regardless of desktop scroll*/
+
+body,html, {
+  height:100%;
+position: relative;
+background-color: #f7f7f7; /* this is overwriting the body for some reason...*/
+font-size: .97em;
+
+}
+
+/*change positioning/style of sidebar*/
+#sidebar {
+  width: inherit;
+  min-width: 40px;
+  max-width: 60px;
+  background-color: #ffffff;
+  float: left;
+  height:100%;
+  position: fixed;
+  overflow-y:auto;
+  overflow-x:hidden;
+  box-shadow: 1px 1px 1px #888;
+  color: #222222;
+  padding-right: 10px;
+  margin-top: 75px; 
+  z-index: 2;
+}
+
+/* icon bar styles (buttons in sidebar)*/
+
+/*end icon bar styles*/
+
+/*fa is awesome font's original style tag controls*/ /*controls properties of sidebar buttons*/
+ .fa-button {
+  position: relative;
+  right: 8px;
+  padding: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  text-align: center;
+
+  box-shadow: 1px 1px 1px 1px #888;
+  font-weight: 500;
+  font-size: 1.8em !important; /* have to override awesomefonts*/
+  color: #FF4136;
+  text-shadow: 0 1px 0 #fff;
+  width: 45px;
+
+}
+
+/*end icon styles*/
+
+/*Pop out sidebar Styles */
+/* The easiest way I've found to do this is to make a seperate pop out class for each button you place on the page.
+ I haven't found a way to make the size of the container automatically adjust based on how much content is placed inside*/
+
+/*hides div as default. pops out when clicked */
+/* operations dash pop out*/
+#pop-out-tree { 
+
+
+  height: 90%;
+  
+  width: 90%;
+
+}
+
+#pop-out-tree, #pop-out-anomalies, #pop-out-operator, #pop-out-alerts { 
+/* use this source code to edit all the other sidebars. the padding inside often screws up everything
+  /*hides div as default. pops out when clicked */
+  display: none;
+ 
+  background-color: #ffffff;
+  float: left;
+  
+  box-shadow: 1px 1px 1px #888;
+  color: #222222;
+  
+ 
+  margin: 20px;
+  z-index: 4;
+
+  position: fixed;
+  overflow-y:auto;
+  overflow-x:hidden;
+  top: 40px;
+  left: 42px;
+
+  height: 70%;
+  
+  width: 90%;
+
+}
+
+#pop-out-operator { 
+
+  height: 90%;
+  
+  width: 80%;
+
+}
+
+#pop-out-tree { 
+
+
+  height: 90%;
+  
+  width: 90%;
+
+}
+
+
+/*end pop out sidebar stles*/
+
+/*end sidebar styles */
+
+
+/*--------------------------------------------------*/
+
+/* BODY STYLES (MAIN CONTENT OF PAGE)*/
+
+
+/* control styling for the containers/panels on each page*/ 
+
+.container-custom {
+  padding: 0px;
+  margin: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/* control styling for each 'panel' that contains the graphs, charts, maps, etc.*/
+.panel-custom {
+   background-color: #ffffff;
+   padding: 0px;
+   box-shadow: 1px 1px 4px rgb(200,200,200);
+   font-weight: 600;
+   margin-left: 0px;
+   margin-right: -10px;
+   margin-top: 7px;
+   margin-bottom: 3px;
+   border: 1px solid transparent;
+   padding-bottom: 0px;
+
+}
+
+/*Styles for the headers of different containers/panels on each page*/
+.panel-heading {
+	background-color: #ffffff;
+	border-bottom: 1px solid rgb(230,230,230);
+	color: #222222;
+	text-align: center;
+  font-size: 1.5em;
+  padding: 5px;
+
+}
+
+/*control spacing specifically for the spacing between the elements inside each panel and their borders*/
+/*ONLY USE ON CLASSES WITH LOTS OF WHITESPACE BETWEEN THE CONTENT AND BORDER OF PANELS*/
+.body-custom {
+  padding-bottom: 0px;
+  padding-top: 5px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+/*end panel styles */
+
+
+/* table styling*/
+
+th {
+font-size: .8em;
+
+}
+
+td {
+  font-size: .8em;
+}
+
+/* end table styling*/
+
+/* MAIN METRIC STYLING*/
+
+/* count controls the big KPI # (ex. 87% Availability)*/
+.count {
+	font-size: 48px;
+	text-align: center;
+	border: 1px;
+  padding: 0px;
+  margin: 0px;
+  margin-top: -10px;
+
+}
+/* change color of count*/ 
+
+.count_green {
+	color: #1BC98E ;   /*#2ECC40*/
+}
+
+.count_red {
+	color: #FF4136;
+}
+
+.count_orange {
+	color: #FF851B  ;
+}
+
+/*controls the text under the KPI #. The intention is to represent a trend change*/
+/*ex. - 10% (decrease) from last week.*/
+.count_bottom {
+	text-align: center;
+	font-size:18px;
+  margin-bottom: -10px;
+}
+
+/* .green and .red are to change text color in for main metric trending*/
+.green{
+	text-align: center;
+	color: #1BC98E ;
+}
+
+.red {
+	text-align: center;
+	color: #FF4136;
+}
+
+/*end index.html main-metric specific styles */
+
+
+/* GENERAL BUTTON STYLES*/
+.btn {
+	text-align: center;
+}
+
+/*machineclass2/3*/
+#machinedata, #machinedata2, #machinedata3, #machinedata4 {
+  /*positions select list right under the title and between the img files*/
+position: absolute;
+top: 50px;
+left: 30px;
+ 
+width: 100px;
+margin: 5px;
+padding: 2px;
+background: #ffffff;
+border-radius: 4px;
+border: 1.5px solid rgba(0,0,0,0.15);
+box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+cursor: pointer;
+outline: none;
+font-weight: bold;
+color: #000;
+
+}
+
+/*Replace default drop down list arrow with something */
+/*-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+background-image: url('../down-arrow.png');
+
+}
+
+
+/*recolor all link clicking effects to black*/
+a:link {
+    color: black !important;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: black !important;
+}
+
+/* mouse over link */
+a:hover {
+    color: black !important;
+}
+
+/* selected link */
+a:active {
+    color: black !important;
+
+/*END GENERAL BUTTON STYLES*/
+
+/*END BODY (MAIN PAGE CONTENT) STYLING*/

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- required to use D3-->
+<html>
+<head>
+
+<meta charset="utf-8"> <!-- required to use D3-->
+
+  <title>Line Operator</title>
+
+<!--bootstrap stylesheet -->
+<link rel="stylesheet" href="../styles/bootstrap.css">
+
+<link rel="stylesheet" href="../fonts/fonts.css">
+
+<!--Zach's Stylesheet-->
+<link rel="stylesheet" href="../styles/manufacturing.css">
+<link rel="stylesheet" href="../styles/mobile_styles.css">
+
+<link rel="stylesheet" href="../styles/datatables.css">
+
+
+<!-- Hover effects -->
+<link rel="stylesheet" href="../Hover-master/css/hover-min.css">
+
+
+
+    <!--tree-->
+<link rel="stylesheet" href="../styles/tree.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css">
+
+
+<!--D3/bootstrap/jquery scripts-->
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script> <!-- this version of bootstrap is essential to getting the page to run-->
+
+
+<!-- cloudflare links to navbar icons-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!-- datatables (controls tables-->
+<!-- datatables css/js-->
+<!-- each link/script controls a different function for datatables-->
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css">
+
+
+ <!-- needed for datatables-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+ <!-- needed for buttons (ALL)-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
+
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.flash.min.js"></script>
+
+ <!-- needed for PDF/excel/csv Buttons-->
+ <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+ <script type="text/javascript" charset="utf-8" src="https:cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+
+ <!-- needed for print functionality-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+
+ <!-- needed for print functionality-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+
+ <!-- datatables print button-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+ <!-- column visibility button-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js"></script>
+
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+
+<!-- end datables scripts-->
+
+
+
+<!-- script tags for tree (3 total)-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
+<!-- END script tags for tree (3 total)-->
+
+
+<!--Plotly.js source file-->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- Load c3.css -->
+<link href="c3/c3.css" rel="stylesheet">
+
+<!-- Load d3.js (Version 3 - only) and c3.js -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="c3/c3.min.js"></script>
+
+
+<script src='../js/lineModel.js'></script>
+
+
+
+  <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+
+
+    </head>
+
+<body>
+
+<!--controls header at top of page-->
+<!--FOR LATER: add pull left/right visibile sm-md-lg-->
+<header>
+  <nav id="header-nav" class="navbar navbar-default">
+    <div class="container-fluid">
+          <div class="navbar-header">
+            <a href="index.html" class="pull-left">
+          <div class="watson">
+            <img class="watson-img" src="watson.png" style="width:80px;">
+          </div><!-- end watson-logo -->
+        </a>
+
+
+      <div class="navbar-brand">
+              <h1>Line Operator</h1>
+            </div>
+
+
+      <!-- controls mobile nav bar-->
+        <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button> <!-- end mobile nav bar-->
+      </div><!-- end bee-header (IBM logo) -->
+
+
+      <!--contains links that will go into mobile navbar-->
+      <div id="collapsable-nav" class="collapse navbar-collapse">
+              <ul id="nav-list" class="nav navbar-nav navbar-right">
+
+                <li id="navTest2Button">
+                    <a href="index.html" class="hvr-underline-reveal">
+                      <span></span> <br class="hidden-xs">Plant Manager</a>
+                </li>
+
+
+
+              </ul><!-- end nav list-->
+            </div> <!-- end collapsable-nav-->
+
+
+    </div> <!-- end container-->
+  </nav> <!-- end header nav (controls entire navbar)-->
+</header> <!-- end header -->
+
+
+<!-- Body starts here-->
+
+
+
+ <!-- page content -->
+ <div id="main"> <!-- set to 100%. allows the rest of page to scale evenly, fixes sidebar on lefthand side-->
+
+
+
+        <div class="container-fluid">
+                <!-- top tiles -->
+          <div class="row-fluid">
+            <div class='col-lg-12'>
+              <h6><center> Line 1 Target Progress: </center> </h6>
+              <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:90%" data-toggle="tooltip" title='Completed: 788 Target: 875'>
+                  90%
+                </div>
+                <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:10%" data-toggle="tooltip" title='EoD Projection'>
+                10%
+                </div>
+              </div>
+            </div>
+
+      <!-- BEGIN LINE ILLUSTRATION -->
+      <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <div class='panel'>
+          <div class='panel-heading'> Line 1 </div>
+          <div class='panel-body'>
+            <canvas id='singleLineCanvas' width='400' height="500"></canvas>
+            <script>
+                (function() {
+
+                    var canvas = document.getElementById('singleLineCanvas');
+                    var context = canvas.getContext('2d');
+                    //var canvasOffset = $("#canvas").offset();
+                    var offset = canvas.getBoundingClientRect();
+
+                    var offsetX = offset.left;
+                    var offsetY = offset.top;
+
+                    var drawLine = function (ctx, canvas, offsetX, offsetY) {
+
+                      //
+                      var rect = (function () {
+
+                          // constructor
+                          function rect(id, x, y, width, height, fill, stroke, strokewidth, healthscore) {
+                              this.x = x;
+                              this.y = y;
+                              this.id = id;
+                              this.width = width;
+                              this.height = height;
+                              this.fill = fill || "gray";
+                              this.stroke = stroke || "skyblue";
+                              this.strokewidth = strokewidth || 2;
+                              this.healthscore = healthscore;
+                              this.redraw(this.x, this.y);
+                              return (this);
+                          }
+                          rect.prototype.redraw = function (x, y) {
+                              this.x = x || this.x;
+                              this.y = y || this.y;
+                              this.draw(this.stroke);
+                              return (this);
+                          }
+                          //
+                          rect.prototype.highlight = function (x, y) {
+                              this.x = x || this.x;
+                              this.y = y || this.y;
+                              this.draw("orange");
+                              return (this);
+                          }
+                          //
+                          rect.prototype.draw = function (stroke) {
+                              ctx.save();
+                              ctx.beginPath();
+                              ctx.fillStyle = this.fill;
+                              ctx.strokeStyle = stroke;
+                              ctx.lineWidth = this.strokewidth;
+                              ctx.rect(this.x, this.y, this.width, this.height);
+                              ctx.stroke();
+                              ctx.fill();
+                              ctx.restore();
+                          }
+                          //
+                          rect.prototype.isPointInside = function (x, y) {
+                              return (x >= this.x && x <= this.x + this.width && y >= this.y && y <= this.y + this.height);
+                          }
+
+                          return rect;
+                      })();
+
+                      function handleMouseDown(e) {
+                          e.preventDefault();
+
+                          var rectOffset = canvas.getBoundingClientRect();
+
+                          var pos = getMousePos(canvas, e);
+                          var mouseX = pos.x;
+                          var mouseY = pos.y;
+
+
+                          // Put your mousedown stuff here
+                          var clicked = "";
+                          for (var i = 0; i < rects.length; i++) {
+
+                              if (rects[i].isPointInside(mouseX, mouseY)) {
+                                  if(rects[i].id === 'Depelletizer') {
+                                    $('#DepelletizerModal').modal('show');
+                                  } else if (rects[i].id === 'Pelletizer') {
+                                    $('#PelletizerModal').modal('show');
+                                  } else if (rects[i].id === 'Labeler') {
+                                    $('#LabelerModal').modal('show');
+                                  } else if (rects[i].id === 'Caser') {
+                                    $('#CaserModal').modal('show');
+                                  } else if (rects[i].id === 'Shrinkwrapper') {
+                                    $('#ShrinkwrapperModal').modal('show');
+                                  }
+                              }
+                          }
+                      }
+
+                      //
+                      function handleMouseMove(e) {
+
+                          var pos = getMousePos(canvas, e);
+                          var mouseX = pos.x;
+                          var mouseY = pos.y;
+
+
+                          // Put your mousemove stuff here
+                          ctx.clearRect(-50, -50, canvas.width, canvas.height);
+                          for (var i = 0; i < rects.length; i++) {
+                              if (rects[i].isPointInside(mouseX, mouseY)) {
+                                  rects[i].highlight();
+                                  if(rects[i].id !== 'Line') {
+                                    ctx.save();
+                                    ctx.font = "20px Ariel";
+                                    //ctx.fillStyle = 'red';
+                                    ctx.fillText(rects[i].id + " " + (rects[i].healthscore*10) + "%", mouseX, mouseY);
+                                    ctx.restore();
+                                  }
+
+                              } else {
+                                  rects[i].redraw();
+                              }
+                          }
+                      }
+
+                      function getMousePos(canvas, evt) {
+                          var rect = canvas.getBoundingClientRect();
+                          return {
+                            x: evt.clientX - rect.left - 25,
+                            y: evt.clientY - rect.top - 25
+                          };
+                      }
+
+
+                      //
+                      var rects = [];
+                      //
+
+                      ctx.translate(25,25);
+
+                      //Line 1
+                      rects.push(new rect("Line", 25, 0, 5, 400, "black", "black", 5, 9));
+                      rects.push(new rect("Depelletizer", 0, 0, 50, 25, "gray", "black", 5, 10));
+                      rects.push(new rect("Labeler", 25, 40, 25, 35, "red", "black", 5, 2));
+                      rects.push(new rect("Caser", 12, 100, 25, 35, 'gray', 'black', 5, 9));
+                      rects.push(new rect("Shrinkwrapper", 12, 175, 25, 35, 'gray', 'black', 5, 9));
+                      rects.push(new rect("Pelletizer", 12, 250, 25, 35, 'gray', 'black', 5, 8));
+                      rects.push(new rect("Wrapper", 12, 390, 25, 35, 'yellow', 'black', 5, 5));
+
+                      $("#singleLineCanvas").click(handleMouseDown);
+                      $("#singleLineCanvas").mousemove(handleMouseMove);
+
+                    };
+
+                    drawLine(context, canvas, offsetX, offsetY);
+
+                }());
+            </script>
+
+            <!-- Depelletizer Modal -->
+            <div class="modal fade bd-example-modal-lg" id="DepelletizerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" >
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Depelletizer Drilldown</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class='row'>
+                      <div class="col-lg-12">
+
+                        <div id='HeadInOutChart'></div>
+                        <div id='LiftPumpChart'></div>
+                        <div id='DrapperBeltChart'></div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Labeler Modal -->
+            <div class="modal fade" id="LabelerModal" tabindex="-1" role="dialog"  >
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Labeler Drilldown</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class='row'>
+                      <div class="col-md-12">
+
+                        <table id="labeler-table" class="table table-bordered table-hover" cellspacing="0" width="100%">
+                          <thead>
+                          <tr>
+                            <th> Time </th>
+                            <th> Orders Planned </th>
+                            <th> Orders Completed </th>
+                          </tr>
+                          </thead>
+                          <tbody>
+
+                          <tr>
+                            <td> 10-8-17 </td>
+                            <td> 0 </td>
+                            <td> 5 </td>
+                          </tr>
+
+                          <tr>
+                            <td> 10-9-17 </td>
+                            <td> 60 </td>
+                            <td> 55 </td>
+                          </tr>
+
+                          <tr>
+                            <td> 10-10-17 </td>
+                            <td> 60 </td>
+                            <td> 65 </td>
+                          </tr>
+
+                          <tr>
+                            <td> 10-11-17 </td>
+                            <td> 60 </td>
+                            <td> 60 </td>
+                          </tr>
+
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caser Modal -->
+            <div class="modal fade" id="CaserModal" tabindex="-1" role="dialog"  >
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Caser Drilldown</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class='row'>
+                      <div class="col-md-12">
+
+                        <table id="caser-daily-table" class="table table-bordered table-hover" cellspacing="0" width="100%">
+                          <thead>
+                          <tr>
+                            <th> Time </th>
+                            <th> Fault </th>
+                            <th> Duration (h:m:s) </th>
+                          </tr>
+                          </thead>
+                          <tbody>
+
+                          <tr>
+                            <td> 7:58:34 </td>
+                            <td> Setup Missed 3 Blanks </td>
+                            <td> 00:01:13 </td>
+                          </tr>
+
+                          <tr>
+                            <td> 8:44:35 </td>
+                            <td> Mfr Flap Open </td>
+                            <td> 00:00:32 </td>
+                          </tr>
+
+                          <tr>
+                            <td> 10:11:43 </td>
+                            <td> Lane 3 Product Jam </td>
+                            <td> 00:02:40 </td>
+                          </tr>
+
+                          <tr>
+                            <td> 10:51:31 </td>
+                            <td> Right End Flap Open </td>
+                            <td> 00:00:29 </td>
+                          </tr>
+
+                          </tbody>
+                        </table>
+
+                        <!-- <script>
+                                d3.text("data/test_table_data.csv", function(data) {
+                                    var parsedCSV = d3.csv.parseRows(data);
+
+                                    console.log(parsedCSV);
+
+                                    var container = d3.select("#caser-daily-table")
+
+                                        .selectAll("tr")
+                                            .data(parsedCSV).enter()
+                                            .append("tr")
+
+                                        .selectAll("td")
+                                            .data(function(d) { return d; }).enter()
+                                            .append("td")
+                                            .text(function(d) { return d; });
+                                });
+                        </script> -->
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shrinkwrapper Modal -->
+            <div class="modal fade" id="ShrinkwrapperModal" tabindex="-1" role="dialog"  >
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Shrinkwrapper Drilldown</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class='row'>
+                      <div class="col-md-12">
+                        <table id="shrinkwrapper-daily-table" class="table table-bordered table-hover" cellspacing="0" width="100%">
+                          <thead>
+                          <tr>
+                            <th> Time </th>
+                            <th> Fault </th>
+                            <th> Duration (h:m:s) </th>
+                          </tr>
+                          </thead>
+                          <tbody>
+
+                          <tr>
+                            <td> 7:58:34 </td>
+                            <td> Missing Film </td>
+                            <td> 00:00:32 </td>
+                          </tr>
+
+                          <tr>
+                            <td> 8:44:35 </td>
+                            <td> Wand Cam Did Not Engage </td>
+                            <td> 00:00:29 </td>
+                          </tr>
+
+                          <tr>
+                            <td> 00:00:29 </td>
+                            <td> Wand Cam Did Not Engage </td>
+                            <td> 00:01:13 </td>
+                          </tr>
+
+                          <tr>
+                            <td> 10:51:31 </td>
+                            <td> Missing Film </td>
+                            <td> 00:02:40 </td>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <!-- Pelletizer Modal -->
+            <div class="modal fade bd-example-modal-lg" id="PelletizerModal" tabindex="-1" role="dialog"  >
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Pelletizer Drilldown</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class='row'>
+                      <div class="col-md-12">
+
+                          <div id='ElevatorChart'> </div>
+                          <div id='Sweep1Chart'> </div>
+                          <div id='Sweep2Chart'> </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class='col-lg-10'>
+
+
+                <!-- COLUMN SIZE CONTAINER FOR KPIS-->
+
+                <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                      <div class="panel panel-custom kpi-size">
+                        <div class="panel-heading">Case Count</div>
+                          <div class="panel-body">
+            		          <div class="count count_green">1817/2540</div>
+            		          <div class="count_bottom"><i class="green">1% </i> More than Last Week</div>
+            		        </div> <!-- END PANEL BODY-->
+                      </div> <!-- end panel -->
+                    </div> <!-- end column size class -->
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-custom kpi-size">
+                      <div class="panel-heading">Down Time Count</div>
+                        <div class="panel-body">
+                            <div class="count count_orange">56 min</div>
+            		          <div class="count_bottom"><i class="red">11 </i> More than Average</div>
+            		        </div> <!-- END PANEL BODY-->
+                    </div> <!-- end panel -->
+                  </div> <!-- end column size class -->
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-custom kpi-size">
+                      <div class="panel-heading">Fault Count</div>
+                        <div class="panel-body">
+                            <div class="count count_green">10</div>
+            		          <div class="count_bottom"><i class="green">5 </i> Less than Average</div>
+            		        </div> <!-- END PANEL BODY-->
+                    </div> <!-- end panel/custom -->
+                  </div> <!-- end column size class -->
+
+                  <!-- Javascript for Alerts Table-->
+                  <script type="text/javascript">
+                    $(document).ready(function() {
+                      $('#shrinkwrapper-daily-table').DataTable({'lengthMenu':[[5, 10, -1], [5, 10, "All"]]});
+                      $('#fault-table').DataTable({'lengthMenu':[[5, 10, -1], [5, 10, "All"]]});
+                      $('#caser-daily-table').DataTable({'lengthMenu':[[5, 10, -1], [5, 10, "All"]]});
+                      $('#alert-pop-up-table').DataTable( {
+                        scrollY: "370px", //turn on vertical scrolling
+
+
+            //datatables DOM controls. Delete or retype a letter in the single quotes to add/remove a function
+                        //'B' - adds buttons
+                        //'r' - add/remove table processing icon (think color wheel on mac)
+                        //'s' - add/remove search
+                        //'t' -add/remove entire table (don't delete....)
+                        //'i' - add/remove "showing 1 out of 10 entries"
+                        //'p' add pagintation (page 1,2,3,etc.)
+
+
+
+                          dom: 'Brt',
+                          //each item in the single quotes corresponds to a specific button.
+                          //print -
+                          buttons: [
+                               'copy', 'csv', 'excel', 'pdf', 'print',
+
+                          ]
+
+                        } );
+                      } );
+                  </script>
+
+
+
+
+
+
+
+     <!-- begin line graphs-->
+
+        <!-- COLUMN SIZE CONTAINER FOR CHARTS loko -->
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="panel panel-custom kpi-size">
+                   <div class="panel-heading">Downtime Reasons</div>
+                     <div class="panel-body">
+                       <div id='dtrChart'></div>
+                         <script src='../js/downtimebarchart.js'></script>
+
+                      </div> <!-- END PANEL BODY-->
+                    </div> <!-- end panel -->
+                  </div> <!-- end column size class -->
+
+                <script type="text/javascript" charset="utf-8" src="../js/Station_Scraps_Daily.js"></script>
+
+
+                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="panel panel-custom kpi-size">
+                   <div class="panel-heading">Fault Reasons</div>
+                     <div class="panel-body">
+                       <table id="fault-table" class="table table-bordered table-hover" cellspacing="0" width="100%">
+                         <thead>
+                         <tr>
+                           <th> Date </th>
+                           <th> Part </th>
+                           <th> Reason </th>
+                           <th> Duration (h:m:s) </th>
+                         </tr>
+                         </thead>
+                         <tbody>
+
+                           <tr>
+                             <td> 10-11-17 </td>
+                             <td> Caser </td>
+                             <td> Load Guide Jam </td>
+                             <td> 0:0:01 </td>
+                           </tr>
+
+                           <tr>
+                             <td> 10-10-17 </td>
+                             <td> Caser </td>
+                             <td> Main PB Emergency Stop </td>
+                             <td> 0:0:37 </td>
+                           </tr>
+
+                           <tr>
+                             <td> 10-10-17 </td>
+                             <td> Shrink Wrapper </td>
+                             <td> Guard Door 1 Open </td>
+                             <td> 0:0:35 </td>
+                           </tr>
+
+
+                           <tr>
+                             <td> 10-9-17 </td>
+                             <td> Caser </td>
+                             <td> Load Lift Servo Faulted </td>
+                             <td> 0:0:02 </td>
+                           </tr>
+
+                           <tr>
+                             <td> 10-6-17 </td>
+                             <td> Caser</td>
+                             <td> Guard Door 5 Open</td>
+                             <td> 0:0:75 </td>
+                           </tr>
+
+                         </tbody>
+                       </table>
+
+                    </div> <!-- END PANEL BODY-->
+                  </div> <!-- end panel -->
+                </div> <!-- end column size class -->
+
+
+       <!-- Alerts Table Container -->
+
+
+  </div>
+  </div><!-- end row line graphs and Alerts Table-->
+  </div><!-- end container line graphs and Alerts Table-->
+
+</div> <!-- end main-->
+
+</body>
+
+<script>
+     var eChart; var s1Chart; var s2Chart;
+     var hioChart; var lpChart; var dbChart;
+
+     var pModalOpen = false;
+     var dModalOpen = false;
+
+     var eCount = 0; var s1Count = 0; var s2Count = 0;
+     var hioCount = 0; var lpCount = 0; var dbCount = 0;
+
+    $('#PelletizerModal').on('shown.bs.modal', function (e) {
+      eChart = c3.generate({title: {text: 'Elevator'}, bindto: '#ElevatorChart', data: data});
+      s1Chart = c3.generate({title: {text: 'Sweep 1'}, bindto: '#Sweep1Chart', data: data});
+      s2Chart = c3.generate({title: {text: 'Sweep 2'}, bindto: '#Sweep2Chart', data: data});
+      pModalOpen = true;
+    });
+
+    $('#DepelletizerModal').on('shown.bs.modal', function (e) {
+      hioChart = c3.generate({title: {text: 'Head-In-Out'}, bindto: '#HeadInOutChart', data: data});
+      lpChart = c3.generate({title: {text: 'Lift Pump'}, bindto: '#LiftPumpChart', data: data});
+      dbChart = c3.generate({title: {text: 'Drapper Belt'}, bindto: '#DrapperBeltChart', data: data});
+      dModalOpen = true;
+    });
+
+    window.onload = function() {
+
+        var socket = new WebSocket('wss://pcp-iot-3.mybluemix.net/ws/pcp-demo');
+        // Show a connected message when the WebSocket is opened.
+         socket.onopen = function(event) {
+           console.log('connected');
+         };
+
+         socket.onerror = function(error) {
+           console.log('WebSocket Error: ' + error);
+         };
+
+         socket.onmessage = function(event) {
+             var dataName;
+             message = event.data;
+             message = JSON.parse(message);
+
+
+
+             if (message.DATA_NAME === 'pal-channel-0-elevator' && pModalOpen) {
+               var x;
+               if (eCount > 90 ) { x = 1; } else { x = 0; }
+               eChart.flow({
+                 columns: [
+                   ['Amps', message.DATA_VALUE]
+                 ],
+                 length: x
+               });
+
+               eCount++;
+             } else if (message.DATA_NAME === 'pal-channel-1-sweep-1' && pModalOpen){
+               var x;
+               if (s1Count > 90 ) { x = 1; } else { x = 0; }
+               s1Chart.flow({
+                 columns: [
+                   ['Amps', message.DATA_VALUE]
+                 ],
+                 length: x
+               });
+
+               s1Count++;
+             } else if (message.DATA_NAME === 'pal-channel-2-sweep-2' && pModalOpen){
+               var x;
+               if (s2Count > 90 ) { x = 1; } else { x = 0; }
+               s2Chart.flow({
+                 columns: [
+                   ['Amps', message.DATA_VALUE]
+                 ],
+                 length: x
+               });
+
+               s2Count++;
+             } else if (message.DATA_NAME === 'depal-channel-0-head-in-out' && dModalOpen){
+               var x;
+               if (hioCount > 90 ) { x = 1; } else { x = 0; }
+               hioChart.flow({
+                 columns: [
+                   ['Amps', message.DATA_VALUE]
+                 ],
+                 length: x
+               });
+
+               hioCount++;
+             } else if (message.DATA_NAME === 'depal-channel-1-lift-pump' && dModalOpen){
+               var x;
+               if (lpCount > 90 ) { x = 1; } else { x = 0; }
+               lpChart.flow({
+                 columns: [
+                   ['Amps', message.DATA_VALUE]
+                 ],
+                 length: x
+               });
+
+               lpCount++;
+             } else if (message.DATA_NAME === 'depal-channel-2-drapper-belt' && dModalOpen){
+               var x;
+               if (dbCount > 90 ) { x = 1; } else { x = 0; }
+               dbChart.flow({
+                 columns: [
+                   ['Amps', message.DATA_VALUE]
+                 ],
+                 length: x
+               });
+
+               dbCount++;
+             }
+         };
+      }
+
+  //initalize graphs with this data
+  var data = {
+    columns: [
+     ['Amps', 0, 0, 0, 0, 0, 0, 0, 0],
+    ]
+  };
+
+
+</script>
+
+</html>

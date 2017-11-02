@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!--
+The MIT License (MIT)
+Copyright (c) 2011-2016 Twitter, Inc. - Bootstrap
+Copyright (C) 2008-2017, SpryMedia Ltd. - Datatables License
+Copyright (c) 2013 Masayuki Tanaka - C3.js Liscence
+
+ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <title>Drill Through Unitizer PE3</title>
+
+  <!--D3/bootstrap/jquery scripts-->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<!--bootstrap stylesheet -->
+<link rel="stylesheet" href="../styles/bootstrap.css">
+<!--<link rel="stylesheet" href="../styles/bootstrap-theme.css">-->
+
+<!-- other IBM stylesheets-->
+<!--<link rel="stylesheet" href="../styles/main.css">-->
+<link rel="stylesheet" href="../fonts/fonts.css">
+
+<!--Fleet Demo Stylesheet-->
+<link rel="stylesheet" href="../styles/drill_down.css">
+<link rel="stylesheet" href="../styles/mobile_styles.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.0.0/dygraph.css">
+
+<!-- Hover effects -->
+<link rel="stylesheet" href="../Hover-master/css/hover-min.css">
+
+<!-- cloudflare links to navbar icons-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- dygraph script DYGRAPHS ONLY WORKS WHEN THE SCRIPT TAG IS IN HEADER.-->
+<script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.0.0/dygraph.min.js"></script>
+
+ <!-- Plotly.js -->   
+  <script type="text/javascript" charset="utf-8" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/scatterplots/anomaly_plot1.js"></script>
+
+
+<!-- datatables (controls tables-->
+<!-- datatables css/js-->
+<!-- each link/script controls a different function for datatables-->
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css">
+  
+
+<!--js files-->
+ <script type="text/javascript" charset="utf-8" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+ <!-- needed for datatables-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+ <!-- needed for buttons (ALL)-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
+
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.flash.min.js"></script>
+
+ <!-- needed for PDF/excel/csv Buttons-->
+ <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+ <script type="text/javascript" charset="utf-8" src="https:cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+
+ <!-- needed for print functionality-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+
+ <!-- needed for print functionality-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+
+ <!-- datatables print button-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+ <!-- column visibility button-->
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js"></script>
+
+ <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+
+<!-- end datables scripts-->
+
+<style type="text/css">
+  .btn-sidebar-mobile {
+    margin-left: 30px;
+  }
+
+/* REQUIRED TO PREVENT DATATABLES FROM CLIPPING OFF THE PAGE WHEN USING INDIVIDUAL COLUMN FILTERS*/
+
+</style>
+
+
+</head>
+
+<body>
+
+<!--controls header/navbar/links at top of page-->
+<header>
+<!-- main control for navbar (top). Uses default bootstrap classes-->
+  <nav id="header-nav" class="navbar navbar-default">
+    <div class="container-fluid">
+          <div class="navbar-header">
+            <a href="index.html" class="pull-left">
+            <!-- controls icon in upper right portion of header-->
+          <div class="watson">
+            <img class="watson-img" src="watson.png" style="width:80px;">
+          </div><!-- end bee-logo -->
+        </a>
+
+<!-- controls Title of HTML Page-->
+      <div class="navbar-brand">
+      <!--modify white text between h1's to change title--> 
+        <h1>Root Cause Analysis - Unitizer PE3</h1>
+      </div>
+
+      <!-- controls mobile/tablet nav bar. Each span class syncs up to a page link in upper right corner-->
+        <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span><!-- copy/paste this line if you need another link (mobile only)-->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button> <!-- end mobile nav bar-->
+      </div><!-- end bee-header (IBM logo) -->
+      
+      <!--contains links that will go into upper right hand corner-->
+      <div id="collapsable-nav" class="collapse navbar-collapse">
+              <ul id="nav-list" class="nav navbar-nav navbar-right">
+
+                <!-- modify white text between h1's to change titles-->
+                <!-- modify change text between <a href "" to send link to new location-->
+                <li id="navTest2Button">
+                    <a href="Line_Engineer.html" class="hvr-underline-reveal">
+                      <span></span> <br class="hidden-xs">Back to Line Engineer Dash</a>
+                </li>
+
+              </ul><!-- end nav list-->
+            </div> <!-- end collapsable-nav-->
+
+    </div> <!-- end container-->
+  </nav> <!-- end header nav (controls entire navbar)-->
+</header> <!-- end header -->
+
+
+<!-- ===== END HEADER ==== -->
+
+
+<!-- Body starts here-->
+
+<!-- Begin sidebar controls (pop outs) -->
+
+<div class="row-offcanvas row-offcanvas-left">
+  <div id="sidebar" class="sidebar-offcanvas">
+      <div class="col-md-12">
+      <!-- go to awesomefonts.com to look for different buttons-->
+        <!--popout sidebar buttons-->
+        <!-- copy and paste to add more buttons-->
+
+        <div class="icon-style">
+          <!--<a id="button2"><i class="fa fa-button fa-warning"></i></a>-->
+        </div><!-- button2 is synced to javascript below-->
+
+<!-- pop out javascript -->
+<script type="text/javascript">
+//copy and paste to add more buttons. 
+
+//$( "#button2" ).click(function() {
+//$( "#pop-out-alerts" ).toggle();
+//});
+
+
+</script> <!-- end pop out javascript -->
+  
+  </div> <!-- col sz class holding sidebar-->
+
+<!-- JS controls mobile sidebar button -->
+    <script type="text/javascript">
+            $(document).ready(function() {
+        $('[data-toggle=offcanvas]').click(function() {
+          $('.row-offcanvas').toggleClass('active');
+        });
+      });
+
+    </script><!-- JS for mobile sidebar button -->
+
+  
+  </div> <!-- end sidebar-->
+
+<!-- ===== END SIDEBAR ==== _-->
+
+
+ <!-- MAIN PAGE CONTENT -->
+ <div id="main-drill"> <!-- DO NOT DELETE. Allows content between sidebar and header to scale evenly, fixes sidebar on lefthand side.-->
+
+ <!-- Active Deliveries Map Container-->
+
+     <div class="container-fluid container-custom">
+        <div class="row-fluid">
+
+        <p class="visible-xs"><!--controls sidebar on mobile -->
+        <button type="button" class="btn btn-primary btn-xs btn-sidebar-mobile" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+      </p>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-custom">
+              <div class="panel-heading">Maintenance Records - Unitizer PE3</div>
+              <div class="panel-body">
+
+                         <!-- uses datatables default style classes-->
+                         <!-- delete no wrap class. nowrap is only for tables with search functionality-->
+          <table id="anomalyTable" class="table table-bordered table-hover" width="100%">
+
+
+             
+
+            <thead>
+
+          <tr>
+<th title="Field #2">Event date</th>
+<th title="Field #3">Event</th>
+<th title="Field #4">Anomaly</th>
+<th title="Field #5">Anomaly Index</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr>
+
+<td>03-10-2016</td>
+<td>QA test</td>
+<td>Vibration</td>
+<td align="right">2.39</td>
+</tr>
+
+<tr>
+
+<td>03-11-2016</td>
+<td>Asset Failure</td>
+<td>F</td>
+<td align="right">0</td>
+</tr>
+
+<tr>
+
+<td>03-12-2016</td>
+<td>Prescriptive Maintenance</td>
+<td>F</td>
+<td align="right">0</td>
+
+</tr>
+
+<tr>
+
+<td>03-20-2016</td>
+<td>QA Test</td>
+<td>F</td>
+<td align="right">0.92</td>
+
+</tr>
+
+<tr>
+
+<td>03-25-2016</td>
+<td>QA Test</td>
+<td>F</td>
+<td align="right">0.78</td>
+</tr>
+
+<tr>
+
+<td>03-30-2016</td>
+<td>QA Test</td>
+<td>F</td>
+<td align="right">0.88</td>
+</tr>
+
+<tr>
+
+<td>04-05-2016</td>
+<td>QA Test</td>
+<td>F</td>
+<td align="right">0.77</td>
+</tr>
+
+</tbody>
+
+          </table>
+
+          <!-- Javascript for DRILL down  (ANOMALY VS. FAILURE) Table 1-->
+                         <script type="text/javascript">
+                             $(document).ready(function() {
+                                 $('#anomalyTable').DataTable( {
+
+
+                                   "order": [
+
+                                  [ 0, "asc" ]
+
+                                   ],
+
+
+                                     //datatables DOM controls. Delete or retype a letter in the single quotes to add/remove a function
+                                     //'B' - adds buttons
+                    //'r' - add/remove table processing icon (think color wheel on mac)
+                    //'s' - add/remove search
+                    //'t' -add/remove entire table (don't delete....)
+                    //'i' - add/remove "showing 1 out of 10 entries"
+                    //'p' add pagintation (page 1,2,3,etc.) 
+                                     scrollY:        "200px", //turn on vertical scrolling
+        scrollX:        "100%", //turn on horizontal scrolling
+        scrollCollapse: true,// also needed to enable vertical scrolling
+
+                                     dom: 'Brt',
+                                     //each item in the single quotes corresponds to a specific button.
+                                     //print -
+                                     buttons: [
+                                         'copy', 'csv', 'excel', 'pdf', 'print',
+                                         { extend:'colvis', text: 'Select Columns'}
+                                     ]
+                                 } );
+                             } );
+                         </script>
+
+              </div><!-- end panel body-->
+            </div> <!-- end panel custom-->
+          </div> <!-- end col sz -->
+
+        </div><!-- end row-->
+      </div> <!-- end container -->
+
+
+<!-- Main Metric and weather Column size container-->
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              <div class="panel panel-custom">
+              <div class="panel-heading"> Survival Curve</div>
+                <div class="panel-body body-custom">
+          
+                    <div id="survival1" style="width: 100%; height: 265px;"></div>
+
+                </div><!-- end panel body-->
+              </div><!-- end panel custom-->
+            </div><!-- end col sz-->
+
+<!-- script tag to survival analysis line graph-->
+            <script type="text/javascript" charset="utf-8" src="../js/line_graphs/survival_curve_1.js"></script>
+
+
+<!-- Main Metrics Weather  (and then alerts table)-->
+  <div class="container-fluid container-custom">
+    <div class="row-fluid">
+
+    <!-- Anomaly Scatter Plot. It's in the same container/row as the main metrics and weather forecast -->
+          <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="panel panel-custom">
+              <div class="panel-heading">Anomalies vs. Possible Failures</div>
+                <div class="panel-body">
+                  <!-- uses datatables default style classes-->
+                   
+                   <div id="anomaly1" style="width: 100% height: 275px"></div>
+
+<!-- script tag to anomaly scatterplot javascript-->
+                   <script type="text/javascript" charset="utf-8" src="../js/scatterplots/anomaly_plot1.js"></script>
+
+                
+              </div> <!-- end panel custom -->
+            </div> <!-- end column size -->
+
+          </div> <!-- end row fluid-->
+        </div><!-- end container fluid-->
+  
+
+  </div><!-- end main-->
+    
+</body>
+</html>

@@ -1,0 +1,187 @@
+{
+  "type": "", 
+  "name": "Production Line", 
+  "children": [
+    {
+      "type": "", 
+      "name": "Cartoner", 
+      "children": [
+        {
+          "type": "", 
+          "name": "Metal Detector", 
+          "children": [
+            {
+              "type": 1, 
+              "name": "Utilities Not Ready"
+            }, 
+            {
+              "type": 0, 
+              "name": "Out of Materials"
+            }, 
+            {
+              "type": 1, 
+              "name": "QRO Barcode Check"
+            }, 
+            {
+              "type": 1, 
+              "name": "Emergency Stop"
+            }
+          ]
+        }, 
+        {
+          "type": "", 
+          "name": "Carton Flap", 
+          "children": [
+            {
+              "type": 1, 
+              "name": "Upper Film Splice Blocked Too Long"
+            }, 
+            {
+              "type": 0, 
+              "name": "Out of Materials"
+            }, 
+            {
+              "type": 0, 
+              "name": "Discharge Jam"
+            },
+            {
+              "type": 0, 
+              "name": "Improper Nip Rolling Position"
+            }
+
+
+          ]
+        }, 
+        {
+          "type": "", 
+          "name": "Dataman Code Reader", 
+          "children": [
+            {
+              "type": 0, 
+              "name": "Barcode Check"
+            }, 
+            {
+              "type": 0, 
+              "name": "Emergency Stop"
+            }, 
+            {
+              "type": 0, 
+              "name": "Out of Materials"
+            }, 
+            {
+              "type": 1, 
+              "name": "Discharge Jam"
+            }
+          ]
+        }
+       
+      ]
+    }, 
+
+      {
+      "type": "", 
+      "name": "Casepacker", 
+      "children": 
+      [
+        {
+          "type": "", 
+          "name": "Casepacker PE31", 
+          "children": [
+            {
+              "type": 1, 
+              "name": "Emergency Stop"
+            }, 
+            {
+              "type": 1, 
+              "name": "Load Vaccuum Lost"
+            },
+            {
+              "type": 0, 
+              "name": "Fun Tuckering Position Error"
+            }, 
+            {
+              "type": 1, 
+              "name": "Undected Load Error"
+            }
+          ]
+        }, 
+        {
+          "type": "", 
+          "name": "Unitizer PE3", 
+          "children": [
+            {
+              "type": 1, 
+              "name": "Slip Shute Blockage"
+            }, 
+            {
+              "type": 1, 
+              "name": "Case Load Blockage"
+            },
+            {
+              "type": 1, 
+              "name": "Guard Door Open"
+            }, 
+            {
+              "type": 1, 
+              "name": "Low Air Pressure"
+            }
+          ]
+        }
+       
+      ]
+    }, 
+    {
+      "type": "", 
+      "name": "Twinpack", 
+      "children": [
+        {
+          "type": "", 
+          "name": "Bundler S62", 
+          "children": [
+            {
+              "type": 1, 
+              "name": "Reject Shute Full"
+            }, 
+            {
+              "type": 0, 
+              "name": "Compression Belt Failure"
+            }, 
+            {
+              "type": 0, 
+              "name": "Out of Materials"
+            },
+            {
+              "type": 0, 
+              "name": "Bar Code Scan Error"
+            }
+          ]
+        }, 
+        
+        {
+          "type": "", 
+          "name": "Unitizer XR4", 
+          "children": [
+            {
+              "type": 1, 
+              "name": "Tray Jam"
+            }, 
+            {
+              "type": 0, 
+              "name": "Out of Materials"
+            }, 
+            {
+              "type": 1, 
+              "name": "Crosspush Position Error"
+            },
+            {
+              "type": 0, 
+              "name": "Robot Tooling Overtravel"
+            }
+          ]
+        }
+         
+    
+      ]
+    }
+  ]
+}

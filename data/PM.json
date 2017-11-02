@@ -1,0 +1,57 @@
+{
+  "type": "",
+  "name": "Line", 
+  "children": [
+    {
+      "type": "",
+      "name": "Cartoner", 
+      "children": [
+        {
+          "type": 30,
+          "name": "Metal Detector"
+          
+        }, 
+        {
+          "type": 6,
+          "name": "Carton Flap"
+          
+        }, 
+        {
+          "type": 6,
+          "name": "Dataman Code Reader"
+        }
+      ]
+    }, 
+    {
+      "type": "",
+      "name": "Casepacker", 
+      "children": [
+        {
+          "type": -30,
+          "name": "Casepacker PE31" 
+        }, 
+        {
+          "type": -30,
+          "name": "Unitizer PE3"
+          
+        }
+      ]
+    }, 
+    {
+      "type": "",
+      "name": "Twinpack", 
+      "children": [
+        {
+          "type": 5,
+          "name": "Bundler S62"
+        }, 
+        {
+          "type": -7,
+          "name": "Unitizer XR4"
+          
+        }
+      ]
+    }
+
+  ]
+}

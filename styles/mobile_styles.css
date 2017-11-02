@@ -1,0 +1,627 @@
+/*--------------------------------------------------*/
+
+
+@media screen and (max-width: 992px) {
+
+
+  /*use .watson to control the position/style of the images container*/
+  .watson {
+    text-align: center;
+    font-size: 3.2em;
+    margin: 1px 5px 0px 0px;
+    position: absolute;
+    vertical-align: top;
+
+
+  }
+
+
+
+/*force position of main page title to center on tablet*/
+  .navbar-brand {
+    /* delete to have the title/logo scale more with the nav button */
+    padding-top: 25px;
+    height: 60px;
+
+    /*these 3 tags center the title on tablet*/
+    transform: translateX(-30%);
+    left: 80%;
+    position: relative;
+    font-size: 2.2vw;
+}
+
+/* controls height of entire top navbar*/
+.navbar-toggle {
+  margin-bottom: 20px !important;
+
+}
+
+
+
+/*controls spacing/font size for the drop down list on the mobile header*/
+  #nav-list a {
+    margin-top: 0px;
+    padding-top: 5px;
+    font-size: 1.3em;
+  }
+
+
+  /* END header styles on tablet*/
+
+
+/*panel heading styles on tablet*/
+  .panel-heading{
+    font-size: 2.4em;
+    margin-top: 10px;
+    padding: 5px;
+    padding-top:10px;
+  }
+
+ /*style panels to fit screen better on tablet/mobile*/
+.panel-custom {
+   padding: 0px;
+   margin-left: 0px;
+   margin-right: 0px;
+   margin-top: 10px;
+   margin-bottom: 3px;
+}
+
+#main-manager {
+  padding-left: 0px;
+  overflow-x: hidden;
+}
+
+
+
+
+/* END panel styles on tablet*/
+
+/*Change font size for main metric headers on tablet/mobile*/
+
+.metric-heading {
+  font-size: 1.3em;
+}
+
+/*change font for 3 trend charts exec dash mobile*/
+.small-heading {
+font-size: 1.3em;
+}
+  /*SIDEBAR*/
+
+
+/* controls/calculates the position and width of the entire page to allow the sidebar and page content to co-exist  */
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    width:calc(100% + 0px); /* Centers page to compensate for sidebar on mobile*/
+  }
+
+
+/*forces sidebar to get pushed off the screen until the blue arrow button is hit*/
+  .row-offcanvas-left {
+   left: 0px;
+   margin-right: 0px
+  }
+
+/*change positioning of the blue button that hides/opens sidebar*/
+  .row-offcanvas-left.active {
+    left: 2px; /* Don't turn off or set to 0. Will cause sidebar to dissapear */
+  }
+
+/* change position of the sidebar on mobile */
+  .sidebar-offcanvas {
+    position: absolute;
+    top: -18px;
+  }
+
+/* changes position of the blue button that opens up sidebar*/
+.btn-sidebar-mobile-exec{
+margin-top: 10px;
+margin-bottom: 0px;
+margin-left: 10px;
+}
+
+  /*END SIDEBAR*/
+
+
+/*POP OUTS*/
+
+/*EXEC DASH*/
+#pop-out-alerts-exec { /* EXEC DASH ALERTS*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 75%;
+
+  width: 85%;
+
+  top: 65px;
+  left: 65px;
+
+font-size: .9em;
+}
+
+#pop-out-sched-exec { /* exec dash maintenance schedule*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 50%;
+
+  width: 85%;
+  font-size: .9em;
+
+   top: 47px;
+  left: 45px;
+}
+
+#pop-out-revenue-exec { /*MAINTENANCE DASH UNSCHEDULED MAINTENANCE*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 80%;
+
+  width: 80%;
+  font-size: .9em;
+
+ top: 47px;
+  left: 45px;
+}
+
+
+
+/*OPERATIONS DASH*/
+
+#pop-out-alerts-operations { /* pop out for alerts, operations dash*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+   height: 60%;
+
+  width: 85%;
+  font-size: .9em;
+
+   top: 47px;
+  left: 45px;
+
+}
+
+/*MAINTENANCE DASH*/
+
+#pop-out-alerts-maint { /* MAINTENANCE DASH ALERTS*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 67%;
+
+  width: 80%;
+
+  font-size: .9em;
+ top: 47px;
+  left: 45px;
+}
+
+#pop-out-sched-maint { /*MAINTENANCE DASH UNSCHEDULED MAINTENANCE*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 85%;
+
+  width: 80%;
+  font-size: .9em;
+
+ top: 47px;
+  left: 45px;
+}
+
+
+
+
+/* style main metrics for mobile devices*/
+.count {
+  font-size: 40px;
+  text-align: center;
+  border: 1px;
+}
+
+.count_bottom {
+  text-align: center;
+  font-size: 20px;
+}
+
+/*MEDIA TAGS ONLY AFFECT THE PAGE WHEN IT IS RESIZED FOR MOBILE AND TABLETS*/
+
+}/* end large screen queries*/
+
+
+
+/*BEGIN TABLET STYLING FOR THE SIDEBAR*/
+/*MEDIA TAGS ONLY AFFECT THE PAGE WHEN IT IS RESIZED FOR MOBILE AND TABLETS*/
+/* 768 PIXELS - ONLY AFFECTS THE PAGE WHEN THE PAGE IS AROUND TABLET SIZED*/
+
+
+
+
+
+/* SIDEBAR FOR MOBILE SPECIFIC MEDIA QUERIES */
+@media screen and (max-width: 768px) {
+
+
+  /*header styles on tablet*/
+
+
+/*use .watson to control the position/style of the images container*/
+  .watson {
+    text-align: center;
+    font-size: 3.0em;
+    margin: 5px 35px 0px 15px;
+    position: absolute;
+    vertical-align: top;
+    left: -20px;
+
+  }
+
+/*force position of main page title to center on tablet*/
+  .navbar-brand {
+    /* delete to have the title/logo scale more with the nav button */
+    padding-top: 25px;
+    height: 40px;
+
+    /*these 3 tags center the title on tablet*/
+    transform: translateX(-10%);
+    left: 50%;
+    position: relative;
+    font-size: 2.3vw;
+}
+
+
+/* controls height of entire top navbar*/
+.navbar-toggle {
+  margin-bottom: 20px !important;
+
+}
+
+/*controls spacing/font size for the drop down list on the mobile header*/
+  #nav-list a {
+    margin-top: 0px;
+    padding-top: 8px;
+    font-size: 1.3em;
+  }
+
+
+  /* END header styles on tablet*/
+
+
+/*panel heading styles on tablet*/
+  .panel-heading{
+    font-size: 3vw;
+    margin-top: 10px;
+    padding: 5px;
+    padding-top:0px;
+  }
+
+ /*style panels to fit screen better on tablet/mobile*/
+.panel-custom {
+   padding: 0px;
+   margin-left: 0px;
+   margin-right: 0px;
+   margin-top: 10px;
+   margin-bottom: 3px;
+}
+
+/* END panel styles on tablet*/
+
+
+/*SIDEBAR*/
+
+/* controls/calculates the position and width of the entire page to allow the sidebar and page content to co-exist  */
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    width:calc(100% + 0px); /* Centers page to compensate for sidebar on mobile*/
+  }
+
+/*forces sidebar to get pushed off the screen until the blue arrow button is hit*/
+  .row-offcanvas-left {
+   left: 0px;
+  }
+
+/*change positioning of the blue button that hides/opens sidebar*/
+  .row-offcanvas-left.active {
+    left: 2px; /* Don't turn off or set to 0. Will cause sidebar to dissapear */
+  }
+
+/* change position of the sidebar on mobile */
+  .sidebar-offcanvas {
+    position: absolute;
+    top: -15px;
+  }
+
+/* changes position of the blue button that opens up sidebar*/
+.btn-sidebar-mobile{
+margin-top: 10px;
+margin-bottom: 0px;
+margin-left: 10px;
+}
+
+  /*END SIDEBAR*/
+
+
+/*POP OUTS*/
+
+/*EXEC DASH*/
+#pop-out-alerts-exec { /* EXEC DASH ALERTS*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 60%;
+
+  width: 85%;
+
+  top: 65px;
+  left: 65px;
+
+font-size: .9em;
+}
+
+#pop-out-sched-exec { /* exec dash maintenance schedule*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 50%;
+
+  width: 85%;
+  font-size: .9em;
+
+   top: 47px;
+  left: 45px;
+}
+
+#pop-out-revenue-exec { /*MAINTENANCE DASH UNSCHEDULED MAINTENANCE*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 80%;
+
+  width: 80%;
+  font-size: .9em;
+
+ top: 47px;
+  left: 45px;
+}
+
+
+
+/*OPERATIONS DASH*/
+
+#pop-out-alerts-operations { /* pop out for alerts, operations dash*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+   height: 60%;
+
+  width: 85%;
+  font-size: .9em;
+
+   top: 47px;
+  left: 45px;
+
+}
+
+/*MAINTENANCE DASH*/
+
+#pop-out-alerts-maint { /* MAINTENANCE DASH ALERTS*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 67%;
+
+  width: 80%;
+
+  font-size: .9em;
+ top: 47px;
+  left: 45px;
+}
+
+#pop-out-sched-maint { /*MAINTENANCE DASH UNSCHEDULED MAINTENANCE*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 85%;
+
+  width: 80%;
+  font-size: .9em;
+
+ top: 47px;
+  left: 45px;
+}
+
+} /* end sidebar mobile styles */
+
+
+/*--------------------------------------------------*/
+
+/********** XS screen size **********/
+/*THESE TAGS ONLY AFFECT THE STYLE OF THE PAGE FOR MOBILE PHONES. NOT TABLETS*/
+/*changing font size, spacing, etc. to look better on mobile */
+
+/*479 px is specfically for small screen devices*/
+@media (max-width: 641px) {
+
+/*fixes spacing between right and left hand side of screen on mobile only*/
+  #main {
+    padding-right: 55px;
+    padding-left: 55px;
+  }
+
+  /* controls/calculates the position and width of the entire page to allow the sidebar and page content to co-exist  */
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    width:calc(90% + 75px); /* Centers page to compensate for sidebar on mobile*/
+  }
+
+ /*forces sidebar to get pushed off the screen until the blue arrow button is hit*/
+  .row-offcanvas-left {
+   left: 0px;
+  }
+
+/*change positioning of the blue button that hides/opens sidebar*/
+  .row-offcanvas-left.active {
+    left: 2px; /* Don't turn off or set to 0. Will cause sidebar to dissapear */
+  }
+
+/* change position of the sidebar on mobile */
+  .sidebar-offcanvas {
+    position: absolute;
+    top: -15px;
+  }
+
+/* changes position of the blue button that opens up sidebar*/
+.btn-sidebar-mobile-exec{
+margin-top: 10px;
+margin-bottom: 0px;
+margin-left: 30px;
+}
+
+	/*style logo in left hand corner of screen on mobile*/
+  .watson {
+		text-align: center;
+		font-size: 1.6em;
+		position: absolute;
+    left: -20px;
+    top: 10px;
+	}
+
+/*Fixes position/styles TITLE on each page for MOBILE. fixes title in center of screen*/
+  .navbar-brand {
+  padding-top: 20px;
+  height: 50px;
+  transform: translateX(-50%);
+  left: 52%;
+  position: relative;
+  font-size: 1.4em;
+}
+
+/*control height of entire header on mobile*/
+.navbar-toggle {
+  margin-bottom: 25px !important;
+
+}
+
+/*changes the position of the black navbar button in the header (right hand side)  */
+.navbar-toggle {
+  top: 12px;
+  left: -10px;
+
+}
+
+/*style the drop down list containing other page links*/
+ #nav-list a {
+  margin-top: 0px;
+  font-size: 1.4em;
+
+  }
+
+
+/* change font size of panel headings for mobile*/
+.panel-heading{
+  	font-size: 4vw;
+  }
+
+/*makes font size smaller for mobile*/
+  td {
+    font-size: 2.5vw
+  }
+
+  th {
+    font-size: 3vw;
+  }
+
+
+/*Pop out classes for mobile*/
+
+#pop-out-alerts-maint { /* alerts on the maintenance dash*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  top: 53px;
+  left: 42px;
+  height: 100%;
+
+  width: 85%;
+
+  font-size: .9em;
+  top: 48px;
+
+}
+
+#pop-out-sched-exec { /* pop out for maintenance sched. exec dash*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 70%;
+
+  width: 85%;
+  font-size: .9em;
+  top: 48px;
+  left: 41px;
+
+}
+
+#pop-out-alerts-exec { /* pop out alerts exec dash*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 100%;
+
+  width: 85%;
+
+  top: 66px;
+  left: 63px;
+
+font-size: .9em;
+}
+
+#pop-out-alerts-operations { /* pop out for alerts, operations dash*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+   height: 100%;
+
+  width: 85%;
+  font-size: .9em;
+
+  top: 48px;
+
+}
+
+#pop-out-alerts-maint { /* alerts on the maintenance dash*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  top: 53px;
+  left: 42px;
+  height: 100%;
+
+  width: 85%;
+
+  font-size: .9em;
+  top: 48px;
+
+}
+
+#pop-out-sched-maint { /*pop out for (truck icons) maintenance dash*/
+  /*hides div as default. pops out when clicked */
+  display: none;
+  height: 100%;
+
+  width: 85%;
+
+  font-size: .9em;
+
+  top: 48px;
+
+}
+
+/* style main metrics for mobile devices*/
+.count {
+  font-size: 2em;
+  text-align: center;
+  border: 1px;
+}
+
+.count_bottom {
+  text-align: center;
+  font-size:1em;
+}
+
+}/* END MOBILE STYLES 641 */
